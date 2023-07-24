@@ -7,7 +7,7 @@ codirector, % Uncomment to add a codirector to the title page
 
 
 % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
-\titulo{Desarrollo de dispositivo de rastreo GNSS} 
+\titulo{Desarrollo de un dispositivo de rastreo satelital mediante GNSS (Global Navigation Satellite System)} 
 
 % Nombre del posgrado, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \degreename
 \posgrado{Carrera de Especialización en Sistemas Embebidos} 
@@ -17,7 +17,7 @@ codirector, % Uncomment to add a codirector to the title page
 %\posgrado{Maestría en Internet de las cosas}
 
 % Tu nombre, se puede usar el cualquier lugar del documento con el comando \authorname
-\autor{Nicolás Gabriel Cettra} 
+\autor{Ing. Nicolás Gabriel Cettra} 
 
 % El nombre del director y co-director, se puede usar el cualquier lugar del documento con el comando \supname y \cosupname y \pertesupname y \pertecosupname
 \director{Nombre del Director}
@@ -69,8 +69,9 @@ codirector, % Uncomment to add a codirector to the title page
 \rowcolor[HTML]{C0C0C0} 
 Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
 0      & Creación del documento                                 &\fechaInicioName \\ \hline
-1      & Se completa hasta el punto 5 inclusive                 & 04/07/2023 \\ \hline
-2      & Se completa hasta el punto 9 inclusive                 & 10/07/2023 \\ \hline
+1      & Se completa hasta el punto 5 inclusive                 & 04 de julio de 2023 \\ \hline
+2      & Se completa hasta el punto 9 inclusive                 & 10 de julio de 2023 \\ \hline
+3      & Se completa hasta el punto 12 inclusive                 & 20 de julio de 2023 \\ \hline
 %		  Se puede agregar algo más \newline
 %		  En distintas líneas \newline
 %		  Así                                                    & dd/mm/aaaa \\ \hline
@@ -92,7 +93,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en la implementación de un sistema embebido que tendrá la capacidad de adquirir un posicionamiento global. Este sistema podrá comunicarse con el servidor proporcionado por la organización mediante vía internet. Además, contará con un acelerómetro para detectar aceleraciones repentinas en el dispositivo, un botón de propósito general y una autonomía de al menos 24 horas; y tendrá un presupuesto preliminar estimado de 204 horas de trabajo y \$XXX, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
+Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en la implementación de un sistema embebido que tendrá la capacidad de adquirir un posicionamiento global. Este sistema podrá comunicarse con el servidor proporcionado por la organización mediante internet. Además, contará con un acelerómetro para detectar aceleraciones repentinas en el dispositivo, un botón de propósito general y una autonomía de al menos 24 horas; y tendrá un presupuesto preliminar estimado de 612 horas de trabajo y 7065 USD, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -117,23 +118,23 @@ Se adjunta a esta acta la planificación inicial.
 
 Con el objetivo de ofrecer soluciones más específicas de manera flexible y económica, se desarrollará un sistema embebido que permitirá adquirir un posicionamiento global a través de un módulo GNSS. Este sistema se comunicará con el servidor proporcionado por la organización mediante GPRS. Además, contará con un acelerómetro para detectar aceleraciones bruscas en el dispositivo. También se incluirá un botón con funciones programables de propósito múltiple y una autonomía de al menos 24 horas.
 
-Una de las características clave que se debe tener en cuenta es la capacidad de adaptar el hardware a diferentes sectores. Para el desarrollo de este dispositivo, se utilizará el módulo GNSS/GPRS A9G de la empresa Ai Thinker, al que se le acoplará el hardware necesario para cumplir con los objetivos planteados. Es importante mencionar que contamos con el SDK del módulo, lo que nos permitirá programarlo según nuestras necesidades.
+Una de las características clave que se debe tener en cuenta es la capacidad de adaptar el hardware a diferentes sectores. Para el desarrollo de este dispositivo, se utilizará el módulo GNSS/GPRS A9G de la empresa Ai Thinker, al que se le acoplará el hardware necesario para cumplir con los objetivos planteados. Es importante mencionar que se cuenta con el SDK del módulo, lo que permitirá programarlo según las necesidades.
 
-El dispositivo debe ser capaz de enviar información a través de GPRS utilizando los protocolos de comunicación UDP o TCP, y se requerirá la capacidad de utilizar MQTT dentro del protocolo TCP. Dicha comunicación se puede apreciar en la figura 1. Además, se utilizará el acelerómetro MPU6050 mediante la interfaz i2c para la adquisición de aceleraciones.
+El dispositivo debe ser capaz de enviar información a través de GPRS utilizando los protocolos de comunicación UDP o TCP, y se requerirá la capacidad de utilizar MQTT dentro del protocolo TCP. Dicha comunicación se puede apreciar en la figura 1. Además, se utilizará el acelerómetro MPU6050 mediante la interfaz I2C para la adquisición de aceleraciones.
 
-En cuanto a la alimentación del dispositivo, se utilizará una batería de 3.7 V. Esto hace que la eficiencia energética sea indispensable para maximizar la duración de la batería.
+En cuanto a la alimentación del dispositivo, se utilizará una batería de 3,7 V. Esto hace que la eficiencia energética sea indispensable para maximizar la duración de la batería.
 
 En cuanto al botón, este debe ser multiproposito. El dispositivo generará un evento al pulsarlo y el significado será asignado del lado del servidor.
 
 El software embebido debe ser diseñado teniendo en cuenta la posibilidad de agregar módulos adicionales en el futuro, y se implementará un sistema operativo en tiempo real (RTOS). Además, se utilizará como base para futuros proyectos.
 
+En la figura 1 se puede apreciar el diagrama en bloque de la comunicacion entre el dispositivo y el servidor.
 
-La descripción técnica-conceptual \textbf{debe incluir al menos un diagrama en bloques del sistema} y descripción funcional de la solución propuesta.
 
 \begin{figure}[htpb]
 \centering 
 \includegraphics[width=1\textwidth]{./Figuras/diagBloque.png}
-\caption{Diagrama en bloques del sistema}
+\caption{Diagrama en bloques del sistema.}
 \label{fig:diagBloques}
 \end{figure}
 
@@ -150,15 +151,9 @@ La descripción técnica-conceptual \textbf{debe incluir al menos un diagrama en
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Rol           & Nombre y Apellido & Organización 	& Puesto 	\\ \hline
-Auspiciante   &      -             &        -      	&    -    	\\ \hline
 Cliente       & \clientename      &\empclientename	&    Gerente    	\\ \hline
-Impulsor      &       -            &        -      	&       - 	\\ \hline
 Responsable   & \authorname       & FIUBA        	& Alumno 	\\ \hline
-Colaboradores &     -              &       -       	&      -  	\\ \hline
 Orientador    & \supname	      & \pertesupname 	& Director Trabajo final \\ \hline
-Equipo        &  -                  &       -       	&     -   	\\ \hline
-Opositores    &      -             &       -       	&      -  	\\ \hline
-Usuario final &                   &              	&        	\\ \hline
 \end{tabularx}
 \end{table}
 
@@ -172,16 +167,24 @@ El propósito de este proyecto es desarrollar un sistema embebido que permita co
 \section{4. Alcance del proyecto}
 \label{sec:alcance}
 
-El sistema embebido a desarrollar tendrá los siguientes alcances:
+El sistema embebido a desarrollar tendrá los siguientes alcances: \\
+
+El proyecto incluye:
 \begin{itemize}
-    \item Generar reportes periódicos de manera programada.
-    \item Generar reportes basados en eventos específicos, como la activación del botón multipropósito, una aceleración brusca o un cambio de dirección.
-    \item Ser configurable a través de interfaces como USB, GPRS o SMS.
-    \item Establecer conexión a Internet mediante GPRS para el intercambio de información.
-    \item Comunicarse utilizando los protocolos UDP o TCP.
-    \item Capacidad para almacenar reportes en memoria en caso de interrupciones en la conexión a Internet.
-    \item Autonomía mínima de 24 horas.
-    \item Este proyecto se enfocará exclusivamente en la compatibilidad con el módulo A9G de Ai Thinker, sin contemplar la compatibilidad con otros módulos.
+
+    \item Implementación en RTOS de bibliotecas para la interpretación de tramas GPS y el protocolo de comunicación con control CRC (verificación por redundancia cíclica).
+    \item Desarrollo de protocolo para el envio de reportes gatillados por eventos.
+    \item Kit de comandos para configurar el dispositivo mediante USB, GPRS o SMS.
+    \item El software sea capaz de establecer una conexión a Internet mediante GPRS para el intercambio de información via UDP/TCP.
+    \item El software sea capaz de gestionar reportes en memoria en caso de interrupciones en la conexión a Internet.
+    \item Elaboración de manuales de usuario, guías rápidas de uso y otros materiales de documentación.
+
+\end{itemize}
+El proyecto no incluye:
+\begin{itemize}
+    \item Desarrollo del hardware.
+    \item Calibraciones y certificaciones.
+    \item Despliegue de la red de cobertura de la señal.
 \end{itemize}
 \pagebreak
 
@@ -189,9 +192,8 @@ El sistema embebido a desarrollar tendrá los siguientes alcances:
 \label{sec:supuestos}
 Para el desarrollo del presente proyecto se supone que:
 \begin{itemize}
-\item Se supone que la empresa America GIS proporcionará el servidor encargado de recibir la información enviada por el dispositivo. 
-\item Se supone que la empresa también proporcionará el hardware necesario, incluyendo la tarjeta SIM para la conexión GPRS y la interfaz de programación del dispositivo.
-\item Se asume que el módulo GNSS en condiciones optimas, tiene una tolerancia de error de 10 metros en la precisión de la posición.
+\item Se supone que la empresa proporcionará el hardware necesario, incluyendo la tarjeta SIM para la conexión GPRS y la interfaz de programación del dispositivo.
+\item Se asume que el módulo GNSS en condiciones óptimas, tiene una tolerancia de error de 10 metros en la precisión de la posición.
 \item Se supone que el dispositivo solo funcionará si hay una antena compatible con 2G dentro de su rango de alcance.
 \end{itemize}
 
@@ -199,7 +201,7 @@ Para el desarrollo del presente proyecto se supone que:
 \label{sec:requerimientos}
 
 \begin{enumerate}
-\item Requerimientos Funcionales
+\item Requerimientos funcionales
     \begin{enumerate}
     \item El sistema debe ser capaz de adquirir el posicionamiento global mediante un módulo GNSS.
     \item El sistema debe comunicarse con el servidor proporcionado por la empresa America GIS a través de GPRS.
@@ -214,7 +216,7 @@ Para el desarrollo del presente proyecto se supone que:
     \item El sistema debe ser capaz de almacenar reportes en memoria en caso de intermitencia en la conexión a Internet.
     \end{enumerate}
 
-\item Requerimientos de Documentación
+\item Requerimientos de documentación
     \begin{enumerate}
     \item Se debe proporcionar documentación detallada del proceso de configuración del sistema.
     \item Se debe incluir documentación del hardware utilizado, incluyendo el módulo GNSS, el acelerómetro y el botón multipropósito.
@@ -222,20 +224,81 @@ Para el desarrollo del presente proyecto se supone que:
     \item Se debe incluir una guía de usuario que explique el funcionamiento y las características del sistema.
     \item Se debe documentar el protocolo de comunicación utilizado para la interacción con el servidor de America GIS.
     \item Se debe proporcionar una documentación clara sobre las especificaciones y limitaciones del sistema, incluyendo la tolerancia de error del módulo GNSS y la dependencia de una antena compatible con 2G.
+    \item Se debe proporcionar una memoria del trabajo.
+    \item Se debe proporcionar un registro de avances.
     \end{enumerate}
 \end{enumerate}
 
 \section{7. Historias de usuarios (\textit{Product backlog})}
 \label{sec:backlog}
+
+En esta sección se presentarán las historias de usuario, y cada una de ellas recibirá una puntuación basada en tres aspectos:
 \begin{itemize}
-    \item Como usuario, quiero poder configurar la frecuencia de generación de reportes temporizados para adaptarla a mis necesidades. (Ponderación: 3 story points)
-    \item Como usuario, quiero recibir notificaciones inmediatas en caso de detectar una aceleración abrupta en el dispositivo para poder tomar medidas rápidamente. (Ponderación: 5 story points)
-    \item Como usuario, quiero poder personalizar la funcionalidad del botón multipropósito para adaptarlo a mis necesidades específicas. (Ponderación: 2 story points)
-    \item Como usuario, quiero tener la opción de enviar los reportes de manera automática al servidor de America GIS a través del protocolo UDP para una comunicación más eficiente. (Ponderación: 5 story points)
-    \item Como usuario, quiero poder almacenar los reportes en memoria en caso de pérdida temporal de conexión a Internet para asegurar que no se pierda información importante. (Ponderación: 3 story points)
-    \item Como usuario, quiero recibir una notificación en tiempo real cuando se produzca un cambio de dirección brusco en el dispositivo para estar al tanto de cualquier evento inesperado. (Ponderación: 4 story points)
-    \item Como usuario, quiero tener la posibilidad de configurar el sistema mediante una interfaz sencilla y amigable a través de USB para facilitar la configuración y personalización. (Ponderación: 3 story points)
-    \item Como usuario, quiero poder consultar la documentación detallada del sistema para comprender mejor su funcionamiento y aprovechar al máximo sus características. (Ponderación: 2 story points)
+ \item Dificultad: Representa la cantidad de trabajo necesario para completar la historia de usuario.
+ \item Complejidad: Indica la complejidad del trabajo requerido para cumplir con la historia de usuario.
+ \item Riesgo: Refleja el nivel de incertidumbre asociado con el trabajo necesario para la historia de usuario.
+\end{itemize}
+Se utilizará una escala basada en la serie de Fibonacci, donde los números mayores implicarán un mayor costo en términos de tiempo y recursos. Si la suma de los tres componentes no corresponde a un número de la serie de Fibonacci, se elegirá el número más cercano en la serie como puntuación asignada.
+
+\begin{itemize}
+    \item Como usuario, quiero poder configurar la frecuencia de generación de reportes temporizados para adaptarla a mis necesidades. (Ponderación: 5 story points)
+    \begin{itemize}
+        \item Dificultad: 2 (Moderada)
+        \item Complejidad: 2 (Moderada)
+        \item Riesgo: 1 (Bajo)
+    \end{itemize}    
+    
+    \item Como usuario, quiero recibir notificaciones inmediatas en caso de detectar una aceleración abrupta en el dispositivo para poder tomar medidas rápidamente. (Ponderación: 10 story points)
+    \begin{itemize}
+        \item Dificultad: 3 (Compleja)
+        \item Complejidad: 3 (Compleja)
+        \item Riesgo: 4 (Alto)
+    \end{itemize}    
+
+    
+    \item Como usuario, quiero poder personalizar la funcionalidad del botón multipropósito para adaptarlo a mis necesidades específicas. (Ponderación: 3 story points)
+    \begin{itemize}
+        \item Dificultad: 1 (Baja)
+        \item Complejidad: 1 (Baja)
+        \item Riesgo: 1 (Baja)
+    \end{itemize}    
+
+    
+    \item Como usuario, quiero tener la opción de enviar los reportes de manera automática al servidor de America GIS a través del protocolo UDP para una comunicación más eficiente. (Ponderación: 8 story points)
+    \begin{itemize}
+        \item Dificultad: 2 (Moderada)
+        \item Complejidad: 3 (Compleja)
+        \item Riesgo: 3 (Moderado)
+    \end{itemize}  
+    
+    \item Como usuario, quiero poder almacenar los reportes en memoria en caso de pérdida temporal de conexión a Internet para asegurar que no se pierda información importante. (Ponderación: 6 story points)
+    \begin{itemize}
+        \item Dificultad: 2 (Moderada)
+        \item Complejidad: 2 (Moderada)
+        \item Riesgo: 2 (Moderado)
+    \end{itemize}  
+
+    
+    \item Como usuario, quiero recibir una notificación en tiempo real cuando se produzca un cambio de dirección brusco en el dispositivo para estar al tanto de cualquier evento inesperado. (Ponderación: 8 story points)
+    \begin{itemize}
+        \item Dificultad: 2 (Moderada)
+        \item Complejidad: 3 (Compleja)
+        \item Riesgo: 3 (Moderado)
+    \end{itemize}  
+    
+    \item Como usuario, quiero tener la posibilidad de configurar el sistema mediante una interfaz sencilla y amigable a través de USB para facilitar la configuración y personalización. (Ponderación: 5 story points)
+    \begin{itemize}
+        \item Dificultad: 2 (Moderada)
+        \item Complejidad: 2 (Moderada)
+        \item Riesgo: 1 (Bajo)
+    \end{itemize}  
+    
+    \item Como usuario, quiero poder consultar la documentación detallada del sistema para comprender mejor su funcionamiento y aprovechar al máximo sus características. (Ponderación: 3 story points)
+    \begin{itemize}
+        \item Dificultad: 1 (Baja)
+        \item Complejidad: 1 (Baja)
+        \item Riesgo: 1 (Bajo)
+    \end{itemize}  
 \end{itemize}
 
 
@@ -244,10 +307,10 @@ Para el desarrollo del presente proyecto se supone que:
 
 Los entregables del proyecto son:
 \begin{itemize}
-    \item Manual de uso
-    \item Codigo fuente del firmware
-    \item Archivo binario para actualizar el dispositivo
-    \item Informe final
+    \item Manual de uso.
+    \item Código fuente del firmware.
+    \item Archivo binario para actualizar el dispositivo.
+    \item Informe final.
 \end{itemize}
 
 
@@ -256,160 +319,102 @@ Los entregables del proyecto son:
 
 
 \begin{enumerate}
-    \item Configuración inicial del entorno de desarrollo
+    \item Configuración inicial del entorno de desarrollo.
     \begin{enumerate}
-        \item Instalación y configuración del software de desarrollo (4 h)
-        \item Configuración del entorno de programación y depuración (4 h)
-        \item Configuración del entorno de pruebas y simulación (4 h)
+        \item Instalación y configuración del software de desarrollo. (12 h)
+        \item Configuración del entorno de programación y depuración. (12 h)
+        \item Configuración del entorno de pruebas y simulación. (12 h)
     \end{enumerate}
     
-    \item Desarrollo del módulo de adquisición de posicionamiento
+    \item Desarrollo del módulo de adquisición de posicionamiento.
     \begin{enumerate}
-        \item Investigación del módulo GNSS (10 h)
-        \item Implementación de la comunicación con el módulo GNSS (10 h)
-        \item Integración de la funcionalidad de posicionamiento en el sistema embebido (12 h)
+        \item Investigación del módulo GNSS. (30 h)
+        \item Implementación de la comunicación con el módulo GNSS. (30 h)
+        \item Integración de la funcionalidad de posicionamiento en el sistema embebido. (36 h)
     \end{enumerate}
     
-    \item Desarrollo del módulo de detección de aceleraciones abruptas
+    \item Desarrollo del módulo de detección de aceleraciones abruptas.
     \begin{enumerate}
-        \item Investigación y del modulo acelerómetro (8 h)
-        \item Implementación de la lectura y procesamiento de datos del acelerómetro (8 h)
-        \item Integración de la detección de aceleraciones en el sistema embebido (10 h)
+        \item Investigación del modulo acelerómetro. (24 h)
+        \item Implementación de la lectura y procesamiento de datos del acelerómetro. (24 h)
+        \item Integración de la detección de aceleraciones en el sistema embebido. (30 h)
     \end{enumerate}
     
-    \item Desarrollo del módulo de configuración y personalización
+    \item Desarrollo del módulo de configuración y personalización.
     \begin{enumerate}
-        \item Diseño de la interfaz de configuración mediante USB (8 h)
-        \item Implementación de la comunicación y la lógica de configuración (10 h)
-        \item Pruebas y depuración de la funcionalidad de configuración (8 h)
+        \item Diseño de la interfaz de configuración mediante USB. (24 h)
+        \item Implementación de la comunicación y la lógica de configuración. (30 h)
+        \item Pruebas y depuración de la funcionalidad de configuración. (24 h)
     \end{enumerate}
     
-    \item Desarrollo del módulo de generación y envío de reportes
+    \item Desarrollo del módulo de generación y envío de reportes.
     \begin{enumerate}
-        \item Diseño e implementación de la generación de reportes temporizados (12 h)
-        \item Implementacion de GPIO y la logica de configuración (6h)
-        \item Desarrollo de la lógica para generar reportes en función de eventos (10 h)
-        \item Implementación de la comunicación con el servidor de America GIS (12 h)
+        \item Diseño e implementación de la generación de reportes temporizados. (36 h)
+        \item Implementación de GPIO y la lógica de configuración (18h)
+        \item Desarrollo de la lógica para generar reportes en función de eventos. (30 h)
+        \item Implementación de la comunicación con el servidor de America GIS. (36 h)
     \end{enumerate}
     
-    \item Pruebas y validación del sistema completo
+    \item Pruebas y validación del sistema completo.
     \begin{enumerate}
-        \item Realización de pruebas de integración y validación del sistema embebido (18 h)
-        \item Pruebas de conectividad y comunicación con el servidor (8 h)
-        \item Pruebas de rendimiento y estabilidad del sistema (8 h)
+        \item Realización de pruebas de integración y validación del sistema embebido. (54 h)
+        \item Pruebas de conectividad y comunicación con el servidor. (24 h)
+        \item Pruebas de rendimiento y estabilidad del sistema. (24 h)
     \end{enumerate}
     
-    \item Documentación del manual
+    \item Documentación del manual.
     \begin{enumerate}
-        \item Elaboración del manual de usuario (8 h)
-        \item Revisión y edición del manual de usuario (4 h)
+        \item Elaboración del manual de usuario. (24 h)
+        \item Revisión y edición del manual de usuario. (12 h)
     \end{enumerate}
     
-    \item Elaboración del informe
+    \item Elaboración del informe.
     \begin{enumerate}
-        \item Recopilación y análisis de los resultados del proyecto (8 h)
-        \item Redacción del informe final (10 h)
-        \item Revisión y edición del informe final (4 h)
+        \item Recopilación y análisis de los resultados del proyecto. (24 h)
+        \item Redacción del informe final. (30 h)
+        \item Revisión y edición del informe final. (12 h)
     \end{enumerate}
 \end{enumerate}
 
-Cantidad total de horas estimadas: 204 h
+Cantidad total de horas estimadas: 612 h
 
-
+\pagebreak
 \section{10. Diagrama de Activity On Node}
 \label{sec:AoN}
 
-\begin{consigna}{red}
-Armar el AoN a partir del WBS definido en la etapa anterior. 
-
-%La figura \ref{fig:AoN} fue elaborada con el paquete latex tikz y pueden consultar la siguiente referencia \textit{online}:
-
-%\url{https://www.overleaf.com/learn/latex/LaTeX_Graphics_using_TikZ:_A_Tutorial_for_Beginners_(Part_3)\%E2\%80\%94Creating_Flowcharts}
-
-\end{consigna}
-
 \begin{figure}[htpb]
 \centering 
-\includegraphics[width=.8\textwidth]{./Figuras/AoN.png}
+\includegraphics[width=.88\textwidth]{./Figuras/diagrama1.png}
 \caption{Diagrama de \textit{Activity on Node}.}
 \label{fig:AoN}
 \end{figure}
 
-Indicar claramente en qué unidades están expresados los tiempos.
-De ser necesario indicar los caminos semicríticos y analizar sus tiempos mediante un cuadro.
-Es recomendable usar colores y un cuadro indicativo describiendo qué representa cada color, como se muestra en el siguiente ejemplo:
-
-
+\begin{figure}[htpb]
+\centering 
+\includegraphics[width=.94\textwidth]{./Figuras/diagrama2.png}
+\caption{Diagrama de \textit{Activity on Node agrupado}.}
+\label{fig:AoN}
+\end{figure}
+\pagebreak
 
 \section{11. Diagrama de Gantt}
 \label{sec:gantt}
-
-\begin{consigna}{red}
-
-Existen muchos programas y recursos \textit{online} para hacer diagramas de Gantt, entre los cuales destacamos:
-
-\begin{itemize}
-\item Planner
-\item GanttProject
-\item Trello + \textit{plugins}. En el siguiente link hay un tutorial oficial: \\ \url{https://blog.trello.com/es/diagrama-de-gantt-de-un-proyecto}
-\item Creately, herramienta online colaborativa. \\\url{https://creately.com/diagram/example/ieb3p3ml/LaTeX}
-\item Se puede hacer en latex con el paquete \textit{pgfgantt}\\ \url{http://ctan.dcc.uchile.cl/graphics/pgf/contrib/pgfgantt/pgfgantt.pdf}
-\end{itemize}
-
-Pegar acá una captura de pantalla del diagrama de Gantt, cuidando que la letra sea suficientemente grande como para ser legible. 
-Si el diagrama queda demasiado ancho, se puede pegar primero la ``tabla'' del Gantt y luego pegar la parte del diagrama de barras del diagrama de Gantt.
-
-Configurar el software para que en la parte de la tabla muestre los códigos del EDT (WBS).\\
-Configurar el software para que al lado de cada barra muestre el nombre de cada tarea.\\
-Revisar que la fecha de finalización coincida con lo indicado en el Acta Constitutiva.
-
-En la figura \ref{fig:gantt}, se muestra un ejemplo de diagrama de Gantt realizado con el paquete de \textit{pgfgantt}. En la plantilla pueden ver el código que lo genera y usarlo de base para construir el propio.
-
-\begin{figure}[htbp]
-\begin{center}
-\begin{ganttchart}{1}{12}
-  \gantttitle{2020}{12} \\
-  \gantttitlelist{1,...,12}{1} \\
-  \ganttgroup{Group 1}{1}{7} \\
-  \ganttbar{Task 1}{1}{2} \\
-  \ganttlinkedbar{Task 2}{3}{7} \ganttnewline
-  \ganttmilestone{Milestone o hito}{7} \ganttnewline
-  \ganttbar{Final Task}{8}{12}
-  \ganttlink{elem2}{elem3}
-  \ganttlink{elem3}{elem4}
-\end{ganttchart}
-\end{center}
-\caption{Diagrama de Gantt de ejemplo}
-\label{fig:gantt}
-\end{figure}
-
-
-\begin{landscape}
 \begin{figure}[htpb]
 \centering 
-\includegraphics[height=.85\textheight]{./Figuras/Gantt-2.png}
-\caption{Ejemplo de diagrama de Gantt rotado}
+\includegraphics[height=.72\textheight]{./Figuras/gantt_rotado.png}
+\caption{Diagrama de Gantt}
 \label{fig:diagGantt}
 \end{figure}
 
-\end{landscape}
 
-\end{consigna}
+
+\begin{landscape}
+
+\end{landscape}
 
 
 \section{12. Presupuesto detallado del proyecto}
 \label{sec:presupuesto}
-
-\begin{consigna}{red}
-Si el proyecto es complejo entonces separarlo en partes:
-\begin{itemize}
-	\item Un total global, indicando el subtotal acumulado por cada una de las áreas.
-	\item El desglose detallado del subtotal de cada una de las áreas.
-\end{itemize}
-
-IMPORTANTE: No olvidarse de considerar los COSTOS INDIRECTOS.
-
-\end{consigna}
 
 \begin{table}[htpb]
 \centering
@@ -422,24 +427,28 @@ Descripción &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Cantidad} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor unitario} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor total} \\ \hline
+  \multicolumn{1}{|l|}{Dispositivo de rastreo}
  &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} \\ \hline
+  \multicolumn{1}{c|}{ 1 } &
+  \multicolumn{1}{c|}{ 30 } &
+  \multicolumn{1}{c|}{ 30 } \\ \hline
+  \multicolumn{1}{|l|}{Kit de desarrollo}
  &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
+  \multicolumn{1}{c|}{1} &
+  \multicolumn{1}{c|}{20} &
+  \multicolumn{1}{c|}{20} \\ \hline
+  \multicolumn{1}{|l|}{Horas de ingenieria}
+ &
+  \multicolumn{1}{c|}{612} &
+  \multicolumn{1}{c|}{8} &
+  \multicolumn{1}{c|}{4896} \\ \hline
+  \multicolumn{1}{|l|}{Componentes electrónicos varios}
+ &
+  \multicolumn{1}{c|}{-} &
+  \multicolumn{1}{c|}{-} &
+  \multicolumn{1}{c|}{100} \\ \hline
 \multicolumn{3}{|c|}{SUBTOTAL} &
-  \multicolumn{1}{c|}{} \\ \hline
+  \multicolumn{1}{c|}{5046} \\ \hline
 \rowcolor[HTML]{C0C0C0} 
 \multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}COSTOS INDIRECTOS} \\ \hline
 \rowcolor[HTML]{C0C0C0} 
@@ -447,23 +456,17 @@ Descripción &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Cantidad} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor unitario} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor total} \\ \hline
-\multicolumn{1}{|l|}{} &
+\multicolumn{1}{|l|}{Estimado global (40\% de costos directos)} 
    &
-   &
-   \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
+   \multicolumn{1}{c|}{-} & 
+   \multicolumn{1}{c|}{-} &
+   \multicolumn{1}{c|}{2019} &\hline
+
 \multicolumn{3}{|c|}{SUBTOTAL} &
-  \multicolumn{1}{c|}{} \\ \hline
+  \multicolumn{1}{c|}{2019} \\ \hline
 \rowcolor[HTML]{C0C0C0}
 \multicolumn{3}{|c|}{TOTAL} &
-   \\ \hline
+   \multicolumn{1}{c|}{7065} \\ \hline
 \end{tabularx}%
 \end{table}
 
