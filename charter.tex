@@ -71,7 +71,8 @@ Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios 
 0      & Creación del documento                                 &\fechaInicioName \\ \hline
 1      & Se completa hasta el punto 5 inclusive                 & 04 de julio de 2023 \\ \hline
 2      & Se completa hasta el punto 9 inclusive                 & 10 de julio de 2023 \\ \hline
-3      & Se completa hasta el punto 12 inclusive                 & 20 de julio de 2023 \\ \hline
+3      & Se completa hasta el punto 12 inclusive                & 20 de julio de 2023 \\ \hline
+3      & Se completa hasta el punto 15 inclusive                & 28 de julio de 2023 \\ \hline
 %		  Se puede agregar algo más \newline
 %		  En distintas líneas \newline
 %		  Así                                                    & dd/mm/aaaa \\ \hline
@@ -93,7 +94,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en la implementación de un sistema embebido que tendrá la capacidad de adquirir un posicionamiento global. Este sistema podrá comunicarse con el servidor proporcionado por la organización mediante internet. Además, contará con un acelerómetro para detectar aceleraciones repentinas en el dispositivo, un botón de propósito general y una autonomía de al menos 24 horas; y tendrá un presupuesto preliminar estimado de 612 horas de trabajo y 7065 USD, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
+Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en la implementación de un sistema embebido que tendrá la capacidad de adquirir posicionamiento satelital. Este sistema podrá comunicarse con el servidor proporcionado por la organización mediante internet. Además, contará con un acelerómetro para detectar aceleraciones repentinas en el dispositivo, un botón de propósito general y una autonomía de al menos 24 horas; y tendrá un presupuesto preliminar estimado de 612 horas de trabajo y 7065 USD, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -128,7 +129,7 @@ En cuanto al botón, este debe ser multiproposito. El dispositivo generará un e
 
 El software embebido debe ser diseñado teniendo en cuenta la posibilidad de agregar módulos adicionales en el futuro, y se implementará un sistema operativo en tiempo real (RTOS). Además, se utilizará como base para futuros proyectos.
 
-En la figura 1 se puede apreciar el diagrama en bloque de la comunicacion entre el dispositivo y el servidor.
+En la figura 1 se puede apreciar el diagrama en bloques de la comunicación entre el dispositivo y el servidor.
 
 
 \begin{figure}[htpb]
@@ -154,6 +155,7 @@ Rol           & Nombre y Apellido & Organización 	& Puesto 	\\ \hline
 Cliente       & \clientename      &\empclientename	&    Gerente    	\\ \hline
 Responsable   & \authorname       & FIUBA        	& Alumno 	\\ \hline
 Orientador    & \supname	      & \pertesupname 	& Director Trabajo final \\ \hline
+Usuario final    & Público en general	      & - 	& - \\ \hline
 \end{tabularx}
 \end{table}
 
@@ -173,10 +175,10 @@ El proyecto incluye:
 \begin{itemize}
 
     \item Implementación en RTOS de bibliotecas para la interpretación de tramas GPS y el protocolo de comunicación con control CRC (verificación por redundancia cíclica).
-    \item Desarrollo de protocolo para el envio de reportes gatillados por eventos.
-    \item Kit de comandos para configurar el dispositivo mediante USB, GPRS o SMS.
-    \item El software sea capaz de establecer una conexión a Internet mediante GPRS para el intercambio de información via UDP/TCP.
-    \item El software sea capaz de gestionar reportes en memoria en caso de interrupciones en la conexión a Internet.
+    \item Desarrollo del protocolo para el envio de reportes gatillados por eventos.
+    \item Desarrollo del kit de comandos para configurar el dispositivo mediante USB, GPRS o SMS.
+    \item Desarrollo del software que sea capaz de establecer una conexión a Internet mediante GPRS para el intercambio de información via UDP/TCP.
+    \item Implementacion del software para que sea capaz de gestionar reportes en memoria en caso de interrupciones en la conexión a Internet.
     \item Elaboración de manuales de usuario, guías rápidas de uso y otros materiales de documentación.
 
 \end{itemize}
@@ -192,9 +194,10 @@ El proyecto no incluye:
 \label{sec:supuestos}
 Para el desarrollo del presente proyecto se supone que:
 \begin{itemize}
-\item Se supone que la empresa proporcionará el hardware necesario, incluyendo la tarjeta SIM para la conexión GPRS y la interfaz de programación del dispositivo.
-\item Se asume que el módulo GNSS en condiciones óptimas, tiene una tolerancia de error de 10 metros en la precisión de la posición.
-\item Se supone que el dispositivo solo funcionará si hay una antena compatible con 2G dentro de su rango de alcance.
+\item La empresa America GIS proporcionará el servidor encargado de recibir la información enviada por el dispositivo.
+\item La empresa proporcionará el hardware necesario, incluyendo la tarjeta SIM para la conexión GPRS y la interfaz de programación del dispositivo.
+\item El módulo GNSS en condiciones óptimas, tiene una tolerancia de error de 10 metros en la precisión de la posición.
+\item El dispositivo solo funcionará si hay una antena compatible con 2G dentro de su rango de alcance.
 \end{itemize}
 
 \section{6. Requerimientos}
@@ -234,9 +237,9 @@ Para el desarrollo del presente proyecto se supone que:
 
 En esta sección se presentarán las historias de usuario, y cada una de ellas recibirá una puntuación basada en tres aspectos:
 \begin{itemize}
- \item Dificultad: Representa la cantidad de trabajo necesario para completar la historia de usuario.
- \item Complejidad: Indica la complejidad del trabajo requerido para cumplir con la historia de usuario.
- \item Riesgo: Refleja el nivel de incertidumbre asociado con el trabajo necesario para la historia de usuario.
+ \item Dificultad: representa la cantidad de trabajo necesario para completar la historia de usuario.
+ \item Complejidad: indica la complejidad del trabajo requerido para cumplir con la historia de usuario.
+ \item Riesgo: refleja el nivel de incertidumbre asociado con el trabajo necesario para la historia de usuario.
 \end{itemize}
 Se utilizará una escala basada en la serie de Fibonacci, donde los números mayores implicarán un mayor costo en términos de tiempo y recursos. Si la suma de los tres componentes no corresponde a un número de la serie de Fibonacci, se elegirá el número más cercano en la serie como puntuación asignada.
 
@@ -350,7 +353,7 @@ Los entregables del proyecto son:
     \item Desarrollo del módulo de generación y envío de reportes.
     \begin{enumerate}
         \item Diseño e implementación de la generación de reportes temporizados. (36 h)
-        \item Implementación de GPIO y la lógica de configuración (18h)
+        \item Implementación de GPIO y la lógica de configuración. (18h)
         \item Desarrollo de la lógica para generar reportes en función de eventos. (30 h)
         \item Implementación de la comunicación con el servidor de America GIS. (36 h)
     \end{enumerate}
@@ -384,14 +387,15 @@ Cantidad total de horas estimadas: 612 h
 
 \begin{figure}[htpb]
 \centering 
-\includegraphics[width=.88\textwidth]{./Figuras/diagrama1.png}
+\includegraphics[width=1\textwidth]{./Figuras/diagrama1.png}
 \caption{Diagrama de \textit{Activity on Node}.}
 \label{fig:AoN}
 \end{figure}
+\pagebreak
 
 \begin{figure}[htpb]
 \centering 
-\includegraphics[width=.94\textwidth]{./Figuras/diagrama2.png}
+\includegraphics[width=.35\textwidth]{./Figuras/diagrama2rot.png}
 \caption{Diagrama de \textit{Activity on Node agrupado}.}
 \label{fig:AoN}
 \end{figure}
@@ -401,17 +405,22 @@ Cantidad total de horas estimadas: 612 h
 \label{sec:gantt}
 \begin{figure}[htpb]
 \centering 
-\includegraphics[height=0.78\textheight]{./Figuras/gantt_rotado.png}
+\includegraphics[height=0.75\textheight]{./Figuras/gantt_rotado2.png}
+\caption{Diagrama de Gantt}
 
 \label{fig:diagGantt}
 \end{figure}
+\pagebreak
+
+\begin{figure}[htpb]
+\centering 
+
+\includegraphics[height=0.78\textheight]{./Figuras/ganttRotado5.png}
 
 
-
-\begin{landscape}
-
-\end{landscape}
-
+\label{fig:diagGantt}
+\end{figure}
+\pagebreak
 
 \section{12. Presupuesto detallado del proyecto}
 \label{sec:presupuesto}
@@ -438,7 +447,7 @@ Descripción &
   \multicolumn{1}{c|}{1} &
   \multicolumn{1}{c|}{20} &
   \multicolumn{1}{c|}{20} \\ \hline
-  \multicolumn{1}{|l|}{Horas de ingenieria}
+  \multicolumn{1}{|l|}{Horas de ingeniería}
  &
   \multicolumn{1}{c|}{612} &
   \multicolumn{1}{c|}{8} &
@@ -468,38 +477,43 @@ Descripción &
 \rowcolor[HTML]{C0C0C0}
 \multicolumn{3}{|c|}{TOTAL} &
    \multicolumn{1}{c|}{7065} \\ \hline
-\end{tabularx}%
+\end{tabularx}
 \end{table}
 
 
 \section{13. Gestión de riesgos}
 \label{sec:riesgos}
 
-\begin{consigna}{red}
-a) Identificación de los riesgos (al menos cinco) y estimación de sus consecuencias:
- 
-Riesgo 1: detallar el riesgo (riesgo es algo que si ocurre altera los planes previstos de forma negativa)
-\begin{itemize}
-	\item Severidad (S): mientras más severo, más alto es el número (usar números del 1 al 10).\\
-	Justificar el motivo por el cual se asigna determinado número de severidad (S).
-	\item Probabilidad de ocurrencia (O): mientras más probable, más alto es el número (usar del 1 al 10).\\
-	Justificar el motivo por el cual se asigna determinado número de (O). 
-\end{itemize}   
+ Identificación de los riesgos y estimación de sus consecuencias:
 
-Riesgo 2:
-\begin{itemize}
-	\item Severidad (S): 
-	\item Ocurrencia (O):
-\end{itemize}
+    \begin{itemize}
+    
+        \item Riesgo 1: Posible retraso en la entrega del módulo GNSS por problemas de suministro del proveedor.
+        \begin{itemize}
+            \item Severidad (S): 8
+            \item Probabilidad de ocurrencia (O): 6
+        \end{itemize}  
+        
+        \item Riesgo 2: Dificultades técnicas en la implementación del módulo de detección de aceleraciones abruptas, lo que podría llevar a una funcionalidad subóptima o inesperada.
+        \begin{itemize}
+            \item Severidad (S): 7
+            \item Probabilidad de ocurrencia (O): 5
+        \end{itemize}  
+        
+        \item Riesgo 3: Complicaciones en la configuración del sistema a través de la interfaz USB debido a la falta de documentación clara o problemas de compatibilidad.
+        \begin{itemize}
+            \item Severidad (S): 6
+            \item Probabilidad de ocurrencia (O): 4
+        \end{itemize}  
 
-Riesgo 3:
-\begin{itemize}
-	\item Severidad (S): 
-	\item Ocurrencia (O):
-\end{itemize}
+        \item Riesgo 5: Falta de claridad en la documentación del SDK del módulo GNSS/GPRS A9G, lo que puede dificultar su integración y configuración en el sistema.
+        \begin{itemize}
+            \item Severidad (S): 6
+            \item Probabilidad de ocurrencia (O): 5
+        \end{itemize}  
+    \end{itemize}  
 
 
-b) Tabla de gestión de riesgos:      (El RPN se calcula como RPN=SxO)
 
 \begin{table}[htpb]
 \centering
@@ -507,71 +521,107 @@ b) Tabla de gestión de riesgos:      (El RPN se calcula como RPN=SxO)
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Riesgo & S & O & RPN & S* & O* & RPN* \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
+    1   & 8  & 6  &  48   &    &    &      \\ \hline
+    2   & 7  & 5  &  35   &    &    &      \\ \hline
+    3   & 6  &  4 &  24   &    &    &      \\ \hline
+    4   & 7  & 4  &  28   &    &    &      \\ \hline
+    5   & 6  & 5  &  30   &    &    &      \\ \hline
 \end{tabularx}%
 \end{table}
-
-Criterio adoptado: 
-Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a...
-
-Nota: los valores marcados con (*) en la tabla corresponden luego de haber aplicado la mitigación.
-
-c) Plan de mitigación de los riesgos que originalmente excedían el RPN máximo establecido:
- 
-Riesgo 1: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
-  Nueva asignación de S y O, con su respectiva justificación:
-  - Severidad (S): mientras más severo, más alto es el número (usar números del 1 al 10).
-          Justificar el motivo por el cual se asigna determinado número de severidad (S).
-  - Probabilidad de ocurrencia (O): mientras más probable, más alto es el número (usar del 1 al 10).
-          Justificar el motivo por el cual se asigna determinado número de (O).
-
-Riesgo 2: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
- 
-Riesgo 3: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
-
-\end{consigna}
 
 
 \section{14. Gestión de la calidad}
 \label{sec:calidad}
-
-\begin{consigna}{red}
-Elija al menos diez requerientos que a su criterio sean los más importantes/críticos/que aportan más valor y para cada uno de ellos indique las acciones de verificación y validación que permitan asegurar su cumplimiento.
-
+Requerimientos críticos y acciones de verificación y validación:
 \begin{itemize} 
-\item Req \#1: copiar acá el requerimiento.
+    \item Requerimiento 1: el sistema debe ser capaz de adquirir el posicionamiento satelital mediante un módulo GNSS.
+    \begin{itemize}
+    	\item Verificación: realizar pruebas en campo con el sistema embebido y verificar que el módulo GNSS pueda obtener con precisión la posición geográfica en diferentes ubicaciones.
+    	\item Validación: mostrar los resultados de las pruebas de posicionamiento al cliente y obtener su aprobación de que el sistema cumple con el requerimiento.
+    \end{itemize}
+    
+    \item Requerimiento 2: el sistema debe ser capaz de enviar reportes temporizados.
+    \begin{itemize}    
+    	\item Verificación: configurar el sistema para que genere reportes a intervalos de tiempo específicos y verificar que los reportes sean enviados de manera correcta.
+    	\item Validación: presentar los reportes generados por el sistema al cliente y confirmar que se envían según las frecuencias acordadas.
+    \end{itemize}
 
-\begin{itemize}
-	\item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente. Detallar 
-	\item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido. Detallar  
+    \item Requerimiento 3: el sistema debe generar reportes en función de eventos particulares, como presionar el botón multipropósito, una aceleración abrupta o un cambio de dirección.
+    \begin{itemize}    
+    	\item Verificación: simular diferentes eventos en el sistema y verificar que se generen los reportes correspondientes.
+    	\item Validación: mostrar los reportes generados por los eventos simulados al cliente y obtener su aprobación de que el sistema responde adecuadamente a los eventos.
+    \end{itemize}
+
+    \item Requerimiento 4: el sistema debe ser configurable mediante USB, GPRS o SMS.
+    \begin{itemize}    
+    	\item Verificación: conectar el sistema a través de USB, GPRS y SMS y verificar que se pueda configurar correctamente en cada caso.
+    	\item Validación: demostrar al cliente la configuración del sistema utilizando los diferentes métodos de comunicación y obtener su aprobación de que la configuración es efectiva.
+    \end{itemize}
+
+    \item Requerimiento 5: el sistema debe tener una autonomía mínima de 24 horas.
+    \begin{itemize}    
+    	\item Verificación: cargar completamente la batería del sistema y ejecutarlo en condiciones típicas para verificar que alcance al menos 24 horas de funcionamiento continuo.
+    	\item Validación: mostrar al cliente los resultados de las pruebas de autonomía y obtener su aprobación de que el sistema cumple con el requerimiento.
+    \end{itemize}
+
+    \item Requerimiento 6: el sistema debe comunicarse con el servidor de America GIS a través del protocolo UDP para una comunicación más eficiente.
+    \begin{itemize}    
+    	\item Verificación: configurar el sistema para utilizar el protocolo UDP y verificar que se establezca una conexión adecuada con el servidor.
+    	\item Validación: mostrar al cliente que el sistema se comunica eficientemente con el servidor mediante el protocolo UDP y obtener su aprobación de que la comunicación es satisfactoria.
+    \end{itemize}
+
+    \item Requerimiento 7: el sistema debe ser capaz de almacenar reportes en memoria en caso de intermitencia en la conexión a Internet.
+    \begin{itemize}    
+    	\item Verificación: simular pérdidas temporales de conexión y verificar que los reportes se almacenen adecuadamente en memoria.
+    	\item Validación: mostrar al cliente cómo el sistema maneja las interrupciones en la conexión a Internet y obtener su aprobación de que los reportes se almacenan correctamente.
+    \end{itemize}
+
+    \item Requerimiento 8: el sistema debe recibir notificaciones en tiempo real cuando se produzca un cambio de dirección brusco.
+    \begin{itemize}    
+    	\item Verificación: simular cambios de dirección bruscos y verificar que el sistema reciba notificaciones en tiempo real.
+    	\item Validación: presentar al cliente las notificaciones generadas por los cambios de dirección bruscos simulados y obtener su aprobación de que el sistema responde adecuadamente.
+    \end{itemize}
+
+    \item Requerimiento 9: el sistema debe tener una interfaz de configuración mediante USB sencilla y amigable.
+    \begin{itemize}    
+    	\item Verificación: utilizar la interfaz de configuración mediante USB y verificar que sea fácil de usar y comprensible.
+    	\item Validación: mostrar al cliente cómo se realiza la configuración del sistema a través de la interfaz USB y obtener su aprobación de que es amigable y sencilla de utilizar.
+    \end{itemize}
+
+    \item Requerimiento 10: el sistema debe contar con un acelerómetro para detectar aceleraciones abruptas.
+    \begin{itemize}    
+    	\item Verificación: realizar pruebas de aceleración en el sistema y verificar que el acelerómetro detecte las aceleraciones abruptas correctamente.
+    	\item Validación: presentar al cliente los resultados de las pruebas de detección de aceleraciones y obtener su aprobación de que el sistema cumple con la función de detección.
+    \end{itemize}
+
+    
 \end{itemize}
 
-\end{itemize}
-
-Tener en cuenta que en este contexto se pueden mencionar simulaciones, cálculos, revisión de hojas de datos, consulta con expertos, mediciones, etc.  Las acciones de verificación suelen considerar al entregable como ``caja blanca'', es decir se conoce en profundidad su funcionamiento interno.  En cambio, las acciones de validación suelen considerar al entregable como ``caja negra'', es decir, que no se conocen los detalles de su funcionamiento interno.
-
-\end{consigna}
+\pagebreak
 
 \section{15. Procesos de cierre}    
 \label{sec:cierre}
 
-\begin{consigna}{red}
-Establecer las pautas de trabajo para realizar una reunión final de evaluación del proyecto, tal que contemple las siguientes actividades:
+Pautas de trabajo para analizar si se respetó el Plan de Proyecto original:
 
-\begin{itemize}
-	\item Pautas de trabajo que se seguirán para analizar si se respetó el Plan de Proyecto original:
-	 - Indicar quién se ocupará de hacer esto y cuál será el procedimiento a aplicar. 
-	\item Identificación de las técnicas y procedimientos útiles e inútiles que se emplearon, y los problemas que surgieron y cómo se solucionaron:
-	 - Indicar quién se ocupará de hacer esto y cuál será el procedimiento para dejar registro.
-	\item Indicar quién organizará el acto de agradecimiento a todos los interesados, y en especial al equipo de trabajo y colaboradores:
-	  - Indicar esto y quién financiará los gastos correspondientes.
+    \begin{itemize}    
+    \item El líder del proyecto se encargará de realizar esta evaluación.
+    
+    \item Procedimiento: el líder del proyecto revisará el Plan de Proyecto original y lo comparará con los resultados obtenidos durante el desarrollo del proyecto. Se verificará si se cumplieron los objetivos, los requerimientos y las fechas establecidas en el plan. Se identificarán y analizarán las desviaciones y se documentarán las razones detrás de las mismas.
+    \end{itemize}
+
+
+Identificación de las técnicas y procedimientos útiles e inútiles que se emplearon, y los problemas que surgieron y cómo se solucionaron:
+    \begin{itemize}  
+    \item El equipo de trabajo del proyecto será responsable de realizar esta identificación y dejar registro.
+    
+    \item Procedimiento: se realizará una sesión de retroalimentación con todo el equipo de trabajo para discutir las técnicas y procedimientos utilizados durante el proyecto. Se identificarán aquellas que fueron efectivas y útiles para lograr los objetivos, así como las que presentaron dificultades o no brindaron los resultados esperados. Se registrarán las lecciones aprendidas y las soluciones implementadas para resolver los problemas encontrados.
+    \end{itemize}
+Organización del acto de agradecimiento a todos los interesados, especialmente al equipo de trabajo y colaboradores:
+\begin{itemize}  
+    \item El líder del proyecto o el responsable designado por la organización se encargará de organizar el acto de agradecimiento.
+    \item Financiamiento: la organización financiará los gastos correspondientes al acto de agradecimiento, como una muestra de reconocimiento y aprecio hacia el equipo de trabajo y colaboradores por su dedicación y esfuerzo en la ejecución del proyecto.
+
 \end{itemize}
-
-\end{consigna}
-
 
 \end{document}
